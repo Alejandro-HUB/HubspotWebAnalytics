@@ -68,7 +68,10 @@ namespace HubspotWebAnalytics.Controllers
             }
             catch (Exception e)
             {
-                string fail = ("Failed to Created the Contact: " + Contact.firstname + " " + Contact.lastname);
+                string fail = (e 
+                    + 
+                    ": " 
+                    + "Failed to Created the Contact: " + Contact.firstname + " " + Contact.lastname);
                 _logger.LogTrace(fail);
             }
             return View("Index");
