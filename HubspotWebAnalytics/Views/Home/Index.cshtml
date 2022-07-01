@@ -1,0 +1,64 @@
+﻿@using HubspotWebAnalytics.Models
+@model HubspotContactModel
+
+@{
+    ViewData["Title"] = "Contact Page";
+}
+
+<body>
+    <center>
+        <img class="logo" src="https://offers.hubspot.com/hubfs/HubSpot%20Logo-3-1.png"><br>
+        <h2>Contact Page</h2>
+        <p>Add a contact to Hubspot: </p><br>
+        <div class="centered">
+            <form asp-action="CreateContact">
+                <!-- First Name -->
+                <label for="firstname">First name:</label><br>
+                <input type="text" id="fname" name="firstname" asp-for="firstname"><br><br>
+                <!-- Last Name -->
+                <label for="lastname">Last name:</label><br>
+                <input type="text" id="lname" name="lastname" asp-for="lastname"><br><br>
+                <!-- Lead Status -->
+                <label for="hs_lead_status">Lead status:</label><br>
+                <select id="hs_lead_status" name="hs_lead_status" asp-for="hs_lead_status">
+                    <option value="Open">Open</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Open deal">Open deal</option>
+                    <option value="Unqualified">Unqualified</option>
+                    <option value="Attempted to contact">Attempted to contact</option>
+                    <option value="Bad timing">Bad timing</option>
+                    <option value="Signed Up">Signed Up</option>
+                </select><br><br>
+                <!-- Life cycle stage -->
+                <label for="lifecyclestage">Life cycle stage:</label><br>
+                <select id="lifecyclestage" name="lifecyclestage" asp-for="lifecyclestage">
+                    <option value="Subscriber">Subscriber</option>
+                    <option value="Lead">Lead</option>
+                    <option value="Marketing Qualified Lead">Marketing Qualified Lead</option>
+                    <option value="Sales Qualified Lead">Sales Qualified Lead</option>
+                    <option value="Opportunity">Opportunity</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Evangelist">Evangelist</option>
+                    <option value="Other">Other</option>
+                </select><br><br>
+                <!-- Email -->
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" asp-for="email"><br><br>
+                <!-- Phone number -->
+                <label for="phonenumber">Phone number:</label><br>
+                <input type="text" id="phonenumber" name="phonenumber" asp-for="phonenumber"><br><br>
+                <!-- Company -->
+                <label for="company">Company:</label><br>
+                <input type="text" id="company" name="company" asp-for="company"><br><br>
+                <center>
+                    <!-- Submit button -->
+                    <input class="button button3" type="submit" value="Submit">
+                </center>
+            </form>
+        </div>
+    </center>
+</body>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6161412.js"></script>
+<!-- End of HubSpot Embed Code -->
