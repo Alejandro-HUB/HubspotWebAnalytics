@@ -10,7 +10,7 @@ namespace HubspotWebAnalytics.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private  IConfiguration _configuration { get; }
+        private IConfiguration _configuration { get; }
         //Destination API key
         public static string DestinationAPIKey = "";
 
@@ -21,9 +21,6 @@ namespace HubspotWebAnalytics.Controllers
             DestinationAPIKey = _configuration.GetSection("HubspotWebAnalyticsSettings").GetSection("DestinationAPIKey").Value;
         }
 
-        //These are the URI(s) that contain the API key for Contacts
-        public static string initContactv3 = "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=" + DestinationAPIKey;
-
         public IActionResult Index()
         {
             return View();
@@ -31,6 +28,9 @@ namespace HubspotWebAnalytics.Controllers
 
         public IActionResult CreateContact(HubspotContactModel Contact)
         {
+            //These are the URI(s) that contain the API key for Contacts
+            string initContactv3 = "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=" + DestinationAPIKey;
+
             try
             {
                 using (var client = new HttpClient())
@@ -68,9 +68,9 @@ namespace HubspotWebAnalytics.Controllers
             }
             catch (Exception e)
             {
-                string fail = (e 
-                    + 
-                    ": " 
+                string fail = (e
+                    +
+                    ": "
                     + "Failed to Created the Contact: " + Contact.firstname + " " + Contact.lastname);
                 _logger.LogTrace(fail);
             }
